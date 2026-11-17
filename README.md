@@ -24,9 +24,20 @@ Created by [yak](https://isaacyakl.com)
 
 Found a 🐛? Create a [new issue](https://github.com/isaacyakl/remote-jackbox-player/issues/new/choose).
 
+## Development
+
+```bash
+npm install
+npm run dev
+npm run typecheck
+npm run lint
+npm test
+npm run test:e2e
+npm run build
+```
+
 ## To-Do
 
--  Fix open menu blocking area to right of the close button from being clicked
 -  Add a clear button for stream URL
 -  Rename how to pane
 -  Implement language localization **(I am looking for someone to help with this)**

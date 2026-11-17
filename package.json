@@ -1,33 +1,21 @@
 {
 	"name": "remote-jackbox-player",
 	"version": "1.1.1",
-	"browser": "public/index.html",
+	"private": true,
+	"type": "module",
 	"scripts": {
-		"dev": "concurrently -k -c auto \"npm run build:js -- --watch\" \"npm run build:css -- --watch\" \"npm run watch:html\"",
-		"build": "npm run build:js && npm run build:css && npm run build:html && npm run build:static",
-		"build:js": "babel src -o public/script.js",
-		"build:css": "npx tailwindcss -i ./src/input.css -o ./public/output.css --minify",
-		"build:html": "html-minifier ./src/index.html --collapse-whitespace --remove-comments --remove-redundant-attributes --remove-script-type-attributes --remove-empty-attributes --use-short-doctype --minify-css true --minify-js true -o ./public/index.html",
-		"build:static": "cp ./src/remote-jackbox-player-screencap.jpg ./public/remote-jackbox-player-screencap.jpg",
-		"watch:html": "run-when-changed --watch \"./src/index.html\" --exec \"npm run build:html\"",
-		"preview": "open-cli https://remote-jackbox-player-git-preview-isaacyakl.vercel.app/",
-		"preversion": "git checkout master && git pull && npm ci",
-		"version": "npm run build && git add *",
-		"postversion": "git push && git push --tags"
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"start": "node .output/server/index.mjs",
+		"typecheck": "tsc --noEmit",
+		"lint": "eslint .",
+		"test": "vitest run",
+		"test:e2e": "playwright test"
 	},
 	"author": "Isaac 'yak' L. <i@isaacyakl.com> (https://www.isaacyakl.com/)",
 	"license": "MIT",
 	"description": "Play Jackbox games with your friends remotely.",
-	"devDependencies": {
-		"@babel/cli": "^7.20.7",
-		"@babel/core": "^7.20.12",
-		"@babel/preset-env": "^7.20.2",
-		"concurrently": "^7.6.0",
-		"html-minifier": "^4.0.0",
-		"open-cli": "^7.1.0",
-		"run-when-changed": "^2.1.0",
-		"tailwindcss": "^3.1.6"
-	},
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/isaacyakl/remote-jackbox-player.git"
@@ -40,5 +28,37 @@
 	"bugs": {
 		"url": "https://github.com/isaacyakl/remote-jackbox-player/issues"
 	},
-	"homepage": "https://remote-jackbox-player.isaacyakl.com"
+	"homepage": "https://remote-jackbox-player.isaacyakl.com",
+	"dependencies": {
+		"@fontsource-variable/geist": "^5.3.0",
+		"@tanstack/react-router": "^1.170.46",
+		"@tanstack/react-start": "^1.169.5",
+		"class-variance-authority": "^0.7.1",
+		"clsx": "^2.1.1",
+		"cn": "^0.5.2",
+		"lucide-react": "^1.74.0",
+		"nitro": "^3.0.261103-rc",
+		"radix-ui": "^1.8.1",
+		"react": "^19.3.1",
+		"react-dom": "^19.3.1",
+		"shadcn": "^4.23.0",
+		"tailwind-merge": "^3.7.0",
+		"tw-animate-css": "^1.4.0"
+	},
+	"devDependencies": {
+		"@eslint/js": "^10.0.1",
+		"@playwright/test": "^1.65.1",
+		"@tailwindcss/vite": "^4.3.5",
+		"@types/node": "^26.6.6",
+		"@types/react": "^19.3.0",
+		"@types/react-dom": "^19.3.0",
+		"@vercel/config": "^0.14.1",
+		"@vitejs/plugin-react": "^6.3.0",
+		"eslint": "^10.15.0",
+		"tailwindcss": "^4.3.5",
+		"typescript": "^6.0.3",
+		"typescript-eslint": "^8.73.0",
+		"vite": "^8.3.8",
+		"vitest": "^5.1.0"
+	}
 }

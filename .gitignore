@@ -1,2 +1,12 @@
 node_modules
-public
+dist
+.output
+.vinxi
+.tanstack
+playwright-report
+test-results
+blob-report
+*.tsbuildinfo
+.vercel
+.nitro
+coverage

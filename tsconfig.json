@@ -1,0 +1,25 @@
+{
+	"include": ["src/**/*.ts", "src/**/*.tsx", "e2e/**/*.ts", "vite.config.ts", "eslint.config.ts", "vitest.config.ts", "playwright.config.ts", "vercel.ts"],
+	"compilerOptions": {
+		"strict": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"esModuleInterop": true,
+		"jsx": "react-jsx",
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
+		"lib": ["DOM", "DOM.Iterable", "ES2024"],
+		"isolatedModules": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"target": "ES2024",
+		"allowJs": false,
+		"forceConsistentCasingInFileNames": true,
+		"noEmit": true,
+		"types": ["vite/client"],
+		"paths": {
+			"@/*": ["./src/*"]
+		}
+	}
+}

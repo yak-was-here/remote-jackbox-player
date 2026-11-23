@@ -81,6 +81,9 @@ test('keeps internal navigation on this host', async ({ page }) => {
 	await expect(page).toHaveURL(/streamURL=https%3A%2F%2Fexample.com%2Flive/)
 	expect(new URL(page.url()).host).toBe(host)
 
+	// Submitting a stream closes the chrome and the stream iframe covers the bar.
+	await page.locator('#menuButton').click()
+	await expect(page.locator('#shareButton')).toBeVisible()
 	await page.context().grantPermissions(['clipboard-read', 'clipboard-write'])
 	await page.locator('#shareButton').click()
 	await expect(page.getByRole('alert').filter({ hasText: 'URL Copied' })).toBeVisible()

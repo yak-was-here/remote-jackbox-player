@@ -10,7 +10,7 @@ Try it on your phone 📲
 
 Created by [yak](https://isaacyakl.com)
 
-[![Twitter Follow](https://img.shields.io/twitter/follow/isaacyakl?style=social)](https://twitter.com/isaacyakl) [![GitHub followers](https://img.shields.io/github/followers/yak-was-here?style=social)](https://github.com/yak-was-here)
+[![X Follow](https://img.shields.io/twitter/follow/yak_was_here?style=social)](https://x.com/yak_was_here) [![GitHub followers](https://img.shields.io/github/followers/yak-was-here?style=social)](https://github.com/yak-was-here)
 
 ---
 

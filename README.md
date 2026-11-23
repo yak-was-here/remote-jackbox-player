@@ -4,7 +4,7 @@
 
 Find and play Jackbox games remotely (even if you don't own any) all on a single screen! This website allows you to simultaneously watch a Jackbox stream and join the fun from one mobile device. You can find random game sessions hosted on Twitch and join or directly enter a stream URL (if your friend or family member is streaming their game)!
 
-Try it on your mobile device 📲
+Try it on your phone 📲
 
 [![Launch Remote Jackbox Player](https://img.shields.io/badge/Launch-Remote%20Jackbox%20Player%20↗%EF%B8%8F-blue?style=for-the-badge&color=319795)](https://remote-jackbox-player.isaacyakl.com)
 

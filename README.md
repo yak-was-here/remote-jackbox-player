@@ -1,6 +1,6 @@
 # Remote Jackbox Player
 
-![GitHub last commit (branch)](https://img.shields.io/github/last-commit/isaacyakl/remote-jackbox-player/master?label=last%20update) ![GitHub deployments](https://img.shields.io/github/deployments/isaacyakl/remote-jackbox-player/production?label=status) ![GitHub](https://img.shields.io/github/license/isaacyakl/remote-jackbox-player)
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/yak-was-here/remote-jackbox-player/master?label=last%20update) ![GitHub deployments](https://img.shields.io/github/deployments/yak-was-here/remote-jackbox-player/production?label=status) ![GitHub](https://img.shields.io/github/license/yak-was-here/remote-jackbox-player)
 
 Find and play Jackbox games remotely (even if you don't own any) all on a single screen! This website allows you to simultaneously watch a Jackbox stream and join the fun from one mobile device. You can find random game sessions hosted on Twitch and join or directly enter a stream URL (if your friend or family member is streaming their game)!
 
@@ -10,7 +10,7 @@ Try it on your phone 📲
 
 Created by [yak](https://isaacyakl.com)
 
-[![Twitter Follow](https://img.shields.io/twitter/follow/isaacyakl?style=social)](https://twitter.com/isaacyakl) [![GitHub followers](https://img.shields.io/github/followers/isaacyakl?style=social)](https://github.com/isaacyakl)
+[![X Follow](https://img.shields.io/twitter/follow/yak_was_here?style=social)](https://x.com/yak_was_here) [![GitHub followers](https://img.shields.io/github/followers/yak-was-here?style=social)](https://github.com/yak-was-here)
 
 ---
 
@@ -19,10 +19,10 @@ Created by [yak](https://isaacyakl.com)
 | Platform           | Status                                                                               |
 | ------------------ | ------------------------------------------------------------------------------------ |
 | Twitch             | ✅ Supported                                                                         |
-| YouTube            | If [requested](https://github.com/isaacyakl/remote-jackbox-player/issues/new/choose) |
+| YouTube            | If [requested](https://github.com/yak-was-here/remote-jackbox-player/issues/new/choose) |
 | Steam Broadcasting | ❎ Unsupported (Stream delay, Lack of iOS support)                                   |
 
-Found a 🐛? Create a [new issue](https://github.com/isaacyakl/remote-jackbox-player/issues/new/choose).
+Found a 🐛? Create a [new issue](https://github.com/yak-was-here/remote-jackbox-player/issues/new/choose).
 
 ## Development
 

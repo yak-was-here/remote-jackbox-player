@@ -25,6 +25,8 @@ describe('stream urls', () => {
 		})
 		expect(resolveStreamInput('https://www.twitch.tv/coolname')).toMatchObject({ channel: 'coolname' })
 		expect(resolveStreamInput('https://remote-jackbox-player.isaacyakl.com').kind).toBe('howto')
+		expect(resolveStreamInput('https://remote-jackbox-player.vercel.app').kind).toBe('howto')
+		expect(resolveStreamInput('https://remote-jackbox-player-git-preview-team-yak-was-here.vercel.app/').kind).toBe('howto')
 		expect(resolveStreamInput('https://example.com/live').kind).toBe('unknown')
 		expect(resolveStreamInput('https://twitch.tv').kind).toBe('unknown')
 	})
@@ -40,6 +42,11 @@ describe('stream urls', () => {
 		const shared = new URL(shareUrl('https://remote-jackbox-player.isaacyakl.com', '/', 'https://twitch.tv/a'))
 		expect(shared.searchParams.get('streamURL')).toBe('https://twitch.tv/a')
 		expect(shared.hash).toBe('')
+		const preview = new URL(
+			shareUrl('https://remote-jackbox-player-git-preview-team-yak-was-here.vercel.app', '/', 'https://twitch.tv/a'),
+		)
+		expect(preview.origin).toBe('https://remote-jackbox-player-git-preview-team-yak-was-here.vercel.app')
+		expect(preview.searchParams.get('streamURL')).toBe('https://twitch.tv/a')
 	})
 })
 

@@ -87,7 +87,31 @@ describe('oauth', () => {
 		expect(url.searchParams.get('scope')).toBe('user:read:follows')
 		expect(url.searchParams.get('force_verify')).toBe('true')
 		expect(url.searchParams.get('redirect_uri')).toBe('http://localhost:3000/')
+	})
+
+	it('builds the redirect uri from the current origin and path', () => {
 		expect(redirectUriForLocation({ origin: 'http://localhost:3000', pathname: '/' })).toBe('http://localhost:3000/')
+		expect(redirectUriForLocation({ origin: 'http://127.0.0.1:3000', pathname: '' })).toBe('http://127.0.0.1:3000/')
+		expect(
+			redirectUriForLocation({
+				origin: 'https://remote-jackbox-player-git-preview-team-yak-was-here.vercel.app',
+				pathname: '/',
+			}),
+		).toBe('https://remote-jackbox-player-git-preview-team-yak-was-here.vercel.app/')
+		expect(
+			redirectUriForLocation({
+				origin: 'https://remote-jackbox-player.vercel.app',
+				pathname: '/player',
+			}),
+		).toBe('https://remote-jackbox-player.vercel.app/player')
+		const preview = redirectUriForLocation({
+			origin: 'https://remote-jackbox-player-k5qexjpdr-team-yak-was-here.vercel.app',
+			pathname: '/',
+		})
+		expect(preview).toBe('https://remote-jackbox-player-k5qexjpdr-team-yak-was-here.vercel.app/')
+		expect(preview).not.toContain('isaacyakl.com')
+		expect(preview).not.toContain('?')
+		expect(preview).not.toContain('#')
 	})
 
 	it('strips the token hash into session storage before analytics can read it', () => {

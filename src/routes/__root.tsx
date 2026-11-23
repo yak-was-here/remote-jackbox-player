@@ -7,6 +7,9 @@ import { consumeOauthHashScript } from '../lib/twitch'
 const description =
 	"Find and play Jackbox games remotely on a single screen/device (even if you don't own any)! This website allows you to simultaneously watch a Jackbox stream and join the fun from one mobile device."
 
+// SEO only. The player never navigates here. In-app links, copied share URLs, and the Twitch redirect use the current origin.
+const PRODUCTION_ORIGIN = 'https://remote-jackbox-player.isaacyakl.com'
+
 export const Route = createRootRoute({
 	head: () => ({
 		meta: [
@@ -14,25 +17,20 @@ export const Route = createRootRoute({
 			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
 			{ title: 'Remote Jackbox Player' },
 			{ name: 'description', content: description },
-			{ property: 'og:url', content: 'https://remote-jackbox-player.isaacyakl.com' },
+			{ property: 'og:url', content: PRODUCTION_ORIGIN },
 			{ property: 'og:type', content: 'website' },
 			{ property: 'og:title', content: 'Remote Jackbox Player' },
 			{ property: 'og:description', content: description },
-			{
-				property: 'og:image',
-				content: 'https://remote-jackbox-player.isaacyakl.com/remote-jackbox-player-screencap.jpg',
-			},
+			{ property: 'og:image', content: '/remote-jackbox-player-screencap.jpg' },
 			{ name: 'twitter:card', content: 'summary_large_image' },
 			{ property: 'twitter:domain', content: 'remote-jackbox-player.isaacyakl.com' },
-			{ property: 'twitter:url', content: 'https://remote-jackbox-player.isaacyakl.com' },
+			{ property: 'twitter:url', content: PRODUCTION_ORIGIN },
 			{ name: 'twitter:title', content: 'Remote Jackbox Player' },
 			{ name: 'twitter:description', content: description },
-			{
-				name: 'twitter:image',
-				content: 'https://remote-jackbox-player.isaacyakl.com/remote-jackbox-player-screencap.jpg',
-			},
+			{ name: 'twitter:image', content: '/remote-jackbox-player-screencap.jpg' },
 		],
 		links: [
+			{ rel: 'canonical', href: PRODUCTION_ORIGIN },
 			{
 				rel: 'icon',
 				href: 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/google/241/video-game_1f3ae.png',

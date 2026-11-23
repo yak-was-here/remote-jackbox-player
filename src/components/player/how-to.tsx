@@ -83,7 +83,7 @@ export function HowTo({ player }: { player: PlayerController }) {
 							</Button>
 						) : null}
 						<Button asChild variant="secondary" className="rounded-full">
-							<a href="https://github.com/isaacyakl/remote-jackbox-player/issues/new/choose" target="_blank" rel="noopener noreferrer">
+							<a href="https://github.com/yak-was-here/remote-jackbox-player/issues/new/choose" target="_blank" rel="noopener noreferrer">
 								Report a <Bug data-icon="inline-end" />
 							</a>
 						</Button>
@@ -93,10 +93,10 @@ export function HowTo({ player }: { player: PlayerController }) {
 								yak
 							</a>
 							<br />
-							<a href="https://twitter.com/isaacyakl/" target="_blank" rel="noopener noreferrer">
-								Twitter
+							<a href="https://x.com/yak_was_here" target="_blank" rel="noopener noreferrer">
+								X
 							</a>{' '}
-							<a href="https://github.com/isaacyakl/" target="_blank" rel="noopener noreferrer">
+							<a href="https://github.com/yak-was-here/" target="_blank" rel="noopener noreferrer">
 								GitHub
 							</a>
 						</p>

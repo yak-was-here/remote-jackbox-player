@@ -105,6 +105,8 @@ export function usePlayer(search: PlayerSearch) {
 	const [followedNeedsAuth, setFollowedNeedsAuth] = useState(false)
 	const [barOpacity, setBarOpacity] = useState(1)
 	const [height, setHeight] = useState<number | null>(null)
+	const [hintsOpen, setHintsOpen] = useState(true)
+	const [wide, setWide] = useState(true)
 
 	const sessionRef = useRef<Session>(emptySession())
 	const activeUrlRef = useRef(initialUrl)
@@ -274,6 +276,11 @@ export function usePlayer(search: PlayerSearch) {
 	}
 
 	useEffect(() => {
+		const timeout = window.setTimeout(() => setHintsOpen(false), PEEK_MS)
+		return () => window.clearTimeout(timeout)
+	}, [])
+
+	useEffect(() => {
 		const next = search.streamURL ?? ''
 		if (next === activeUrlRef.current) return
 		activeUrlRef.current = next
@@ -349,7 +356,10 @@ export function usePlayer(search: PlayerSearch) {
 
 		if (!isLocalHost(window.location.hostname)) window.addEventListener('beforeunload', confirmUnload)
 
-		const onResize = () => setHeight(window.innerHeight)
+		const onResize = () => {
+			setHeight(window.innerHeight)
+			setWide(window.innerWidth >= 1024)
+		}
 		onResize()
 		window.addEventListener('resize', onResize)
 
@@ -394,6 +404,8 @@ export function usePlayer(search: PlayerSearch) {
 		searching,
 		uiOpen,
 		menuOpen,
+		hintsOpen,
+		wide,
 		shareNotice,
 		followedOpen,
 		statusMessage,

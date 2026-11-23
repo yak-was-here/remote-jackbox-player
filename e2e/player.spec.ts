@@ -51,6 +51,22 @@ test('scroll view stacks both panes inside the player', async ({ page }) => {
 	await expect(page.locator('#gameFrame')).toBeInViewport()
 })
 
+test('shows tooltips on load, hides them after the peek, and restores one on hover', async ({ page }) => {
+	await openReadyPlayer(page)
+	const howTo = page.getByRole('tooltip', { name: 'How-To' })
+	const random = page.getByRole('tooltip', { name: 'Random' })
+	await expect(howTo).toBeVisible()
+	await expect(random).toBeVisible()
+	await expect(howTo).toBeHidden()
+	await expect(random).toBeHidden()
+	await page.locator('#howToButton').hover()
+	await expect(howTo).toBeVisible()
+	await page.mouse.move(480, 360, { steps: 8 })
+	await expect(howTo).toBeHidden()
+	await page.locator('#randomStreamButton').hover()
+	await expect(random).toBeVisible()
+})
+
 test('keeps a stream url in the address bar and the field', async ({ page }) => {
 	await openReadyPlayer(page)
 	const input = page.locator('#streamURL')

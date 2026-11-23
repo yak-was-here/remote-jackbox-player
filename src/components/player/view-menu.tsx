@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button'
 import type { ViewId } from '@/lib/storage'
 import { cn } from '@/lib/utils'
 
+import { Hint } from './hint'
 import type { PlayerController } from './use-player'
 
 const items: Array<{ id: string; label: string; view: ViewId | 'howto'; icon: LucideIcon }> = [
@@ -27,32 +28,26 @@ export function ViewMenu({ player }: { player: PlayerController }) {
 					const pressed = item.view !== 'howto' && player.view === item.view
 					return (
 						<div key={item.id} className="menuItem flex flex-row">
-							<Button
-								id={item.id}
-								type="button"
-								variant="control"
-								size="control"
-								aria-pressed={pressed}
-								aria-label={item.label}
-								className={cn(
-									'player-control pointer-events-auto rounded-none',
-									item.id === 'howToButton' && 'rounded-tr',
-								)}
-								onClick={() => {
-									if (item.view === 'howto') player.onHowTo()
-									else player.onSelectView(item.view)
-								}}
-							>
-								<Icon />
-							</Button>
-							<span
-								className={cn(
-									'help-label mt-1 ml-1 h-8 overflow-hidden rounded-tl rounded-r px-1 text-xl shadow-lg transition-opacity',
-									player.menuOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none w-0 px-0 opacity-0',
-								)}
-							>
-								{item.label}
-							</span>
+							<Hint label={item.label} revealed={player.hintsOpen && player.menuOpen} side="right">
+								<Button
+									id={item.id}
+									type="button"
+									variant="control"
+									size="control"
+									aria-pressed={pressed}
+									aria-label={item.label}
+									className={cn(
+										'player-control pointer-events-auto rounded-none',
+										item.id === 'howToButton' && 'rounded-tr',
+									)}
+									onClick={() => {
+										if (item.view === 'howto') player.onHowTo()
+										else player.onSelectView(item.view)
+									}}
+								>
+									<Icon />
+								</Button>
+							</Hint>
 						</div>
 					)
 				})}

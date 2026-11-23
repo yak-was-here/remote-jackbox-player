@@ -9,6 +9,7 @@ import { ScrollArea } from '@/components/ui/scroll-area'
 import { cn } from '@/lib/utils'
 import { formatViewerCount } from '@/lib/twitch'
 
+import { Hint } from './hint'
 import type { PlayerController } from './use-player'
 import { TwitchGlyph } from './twitch-glyph'
 
@@ -53,28 +54,32 @@ export function StreamBar({ player }: { player: PlayerController }) {
 								onBlur={player.onDraftBlur}
 							/>
 							<InputGroupAddon align="inline-end" className="gap-0 p-0">
-								<InputGroupButton
-									id="randomStreamButton"
-									type="button"
-									variant="control"
-									size="icon-sm"
-									className="player-control size-10 rounded-none"
-									aria-label="Random stream"
-									onClick={player.onRandom}
-								>
-									<Shuffle data-icon="inline-start" />
-								</InputGroupButton>
-								<InputGroupButton
-									id="shareButton"
-									type="button"
-									variant="control"
-									size="icon-sm"
-									className="player-control size-10 rounded-none rounded-r"
-									aria-label="Share"
-									onClick={() => void player.onShare()}
-								>
-									<Share2 data-icon="inline-start" />
-								</InputGroupButton>
+								<Hint label="Random" revealed={player.hintsOpen && player.uiOpen} side="left">
+									<InputGroupButton
+										id="randomStreamButton"
+										type="button"
+										variant="control"
+										size="icon-sm"
+										className="player-control size-10 rounded-none"
+										aria-label="Random stream"
+										onClick={player.onRandom}
+									>
+										<Shuffle data-icon="inline-start" />
+									</InputGroupButton>
+								</Hint>
+								<Hint label="Share" revealed={player.hintsOpen && player.uiOpen} side="right">
+									<InputGroupButton
+										id="shareButton"
+										type="button"
+										variant="control"
+										size="icon-sm"
+										className="player-control size-10 rounded-none rounded-r"
+										aria-label="Share"
+										onClick={() => void player.onShare()}
+									>
+										<Share2 data-icon="inline-start" />
+									</InputGroupButton>
+								</Hint>
 							</InputGroupAddon>
 						</InputGroup>
 					</Field>
@@ -89,18 +94,6 @@ export function StreamBar({ player }: { player: PlayerController }) {
 				>
 					URL Copied
 				</div>
-			</div>
-			<div
-				className={cn('flex w-full justify-end gap-1 overflow-hidden transition-all', player.uiOpen ? 'h-20' : 'h-0')}
-				role="navigation"
-			>
-				<span className={cn('help-label vertical-text mt-1 h-20 w-8 rounded-b rounded-tl py-1 text-xl shadow-lg', player.uiOpen ? 'opacity-100' : 'opacity-0')}>
-					Random
-				</span>
-				<span className={cn('help-label vertical-text mt-1 h-16 w-8 rounded-b rounded-tl py-1 text-xl shadow-lg', player.uiOpen ? 'opacity-100' : 'opacity-0')}>
-					Share
-				</span>
-				<span className={cn('overflow-hidden', player.shareNotice ? 'w-40' : 'w-0')} />
 			</div>
 			{player.statusMessage ? (
 				<Alert>

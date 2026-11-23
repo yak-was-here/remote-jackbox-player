@@ -10,6 +10,7 @@ import {
 	AlertDialogHeader,
 	AlertDialogTitle,
 } from '@/components/ui/alert-dialog'
+import { TooltipProvider } from '@/components/ui/tooltip'
 import { DEFAULT_GAME_URL } from '@/lib/stream-url'
 import { loadTwitchEmbed } from '@/lib/twitch-embed'
 import { cn } from '@/lib/utils'
@@ -64,38 +65,40 @@ export function Player({ player }: { player: PlayerController }) {
 	const showTwitch = player.resolution.kind === 'twitch'
 
 	return (
-		<main
-			id="player"
-			data-view={player.view}
-			className={cn(layout.playerClass, player.height === null && 'h-dvh')}
-			style={player.height === null ? undefined : { height: player.height }}
-		>
-			<section id="streamPane" className={cn('min-h-0', layout.streamClass)}>
-				{showHowTo ? <HowTo player={player} /> : null}
-				{showUnknown && player.resolution.kind === 'unknown' ? (
-					<iframe id="unknownStream" title="Stream" className="absolute inset-0 size-full" src={player.resolution.value} />
-				) : null}
-				{showTwitch ? <div id="twitchStream" className="absolute inset-0 size-full" /> : <div id="twitchStream" className="hidden" />}
-				<StreamBar player={player} />
-				<ViewMenu player={player} />
-				<PaneControls player={player} kind="stream" />
-			</section>
-			<section id="gamePane" className={cn('min-h-0', layout.gameClass)}>
-				<iframe id="gameFrame" title="Jackbox" className="z-10 size-full" src={DEFAULT_GAME_URL} key={player.gameNonce} />
-				<PaneControls player={player} kind="game" />
-			</section>
-			<AlertDialog open={player.reloadOpen} onOpenChange={player.setReloadOpen}>
-				<AlertDialogContent>
-					<AlertDialogHeader>
-						<AlertDialogTitle>Reload the game?</AlertDialogTitle>
-						<AlertDialogDescription>You may lose your spot in the lobby.</AlertDialogDescription>
-					</AlertDialogHeader>
-					<AlertDialogFooter>
-						<AlertDialogCancel>Cancel</AlertDialogCancel>
-						<AlertDialogAction onClick={player.onConfirmReloadGame}>Reload</AlertDialogAction>
-					</AlertDialogFooter>
-				</AlertDialogContent>
-			</AlertDialog>
-		</main>
+		<TooltipProvider>
+			<main
+				id="player"
+				data-view={player.view}
+				className={cn(layout.playerClass, player.height === null && 'h-dvh')}
+				style={player.height === null ? undefined : { height: player.height }}
+			>
+				<section id="streamPane" className={cn('min-h-0', layout.streamClass)}>
+					{showHowTo ? <HowTo player={player} /> : null}
+					{showUnknown && player.resolution.kind === 'unknown' ? (
+						<iframe id="unknownStream" title="Stream" className="absolute inset-0 size-full" src={player.resolution.value} />
+					) : null}
+					{showTwitch ? <div id="twitchStream" className="absolute inset-0 size-full" /> : <div id="twitchStream" className="hidden" />}
+					<StreamBar player={player} />
+					<ViewMenu player={player} />
+					<PaneControls player={player} kind="stream" />
+				</section>
+				<section id="gamePane" className={cn('min-h-0', layout.gameClass)}>
+					<iframe id="gameFrame" title="Jackbox" className="z-10 size-full" src={DEFAULT_GAME_URL} key={player.gameNonce} />
+					<PaneControls player={player} kind="game" />
+				</section>
+				<AlertDialog open={player.reloadOpen} onOpenChange={player.setReloadOpen}>
+					<AlertDialogContent>
+						<AlertDialogHeader>
+							<AlertDialogTitle>Reload the game?</AlertDialogTitle>
+							<AlertDialogDescription>You may lose your spot in the lobby.</AlertDialogDescription>
+						</AlertDialogHeader>
+						<AlertDialogFooter>
+							<AlertDialogCancel>Cancel</AlertDialogCancel>
+							<AlertDialogAction onClick={player.onConfirmReloadGame}>Reload</AlertDialogAction>
+						</AlertDialogFooter>
+					</AlertDialogContent>
+				</AlertDialog>
+			</main>
+		</TooltipProvider>
 	)
 }

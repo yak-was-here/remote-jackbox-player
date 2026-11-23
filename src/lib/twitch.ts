@@ -203,8 +203,10 @@ export function buildAuthorizeUrl(options: {
 	return `https://id.twitch.tv/oauth2/authorize?${params.toString()}`
 }
 
+/** OAuth redirect for this page. Search and hash are ignored so the value stays a stable, registrable URI. */
 export function redirectUriForLocation(location: { origin: string; pathname: string }): string {
-	return `${location.origin}${location.pathname}`
+	const path = location.pathname.startsWith('/') ? location.pathname : `/${location.pathname}`
+	return `${location.origin}${path}`
 }
 
 export function expiresAtFromSeconds(expiresIn: number, now = Date.now()): number {

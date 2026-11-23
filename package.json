@@ -21,7 +21,7 @@
 	"description": "Play Jackbox games with your friends remotely.",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/isaacyakl/remote-jackbox-player.git"
+		"url": "https://github.com/yak-was-here/remote-jackbox-player.git"
 	},
 	"keywords": [
 		"jackbox",
@@ -29,7 +29,7 @@
 		"player"
 	],
 	"bugs": {
-		"url": "https://github.com/isaacyakl/remote-jackbox-player/issues"
+		"url": "https://github.com/yak-was-here/remote-jackbox-player/issues"
 	},
 	"homepage": "https://remote-jackbox-player.isaacyakl.com",
 	"dependencies": {
